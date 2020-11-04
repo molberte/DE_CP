@@ -6,33 +6,34 @@ from numeric_methods.euler_method import EulerMethod
 from numeric_methods.improved_euler_method import ImprovedEulerMethod
 from numeric_methods.runge_kutta_method import RungeKuttaMethod
 from error_calculator.local_errors import LocalErrors
-from error_calculator.total_errors import TotalErrors
 import pandas as np
 
 
 class Points:
     def __init__(self, x_init, y_init, x_max, n_approx, n_0, n_max):
-        self.exact_points = ExactSolution.solve(x_init, y_init, x_max, n_approx, Functions.exact_solution)
-        self.euler_points = EulerMethod.solve(x_init, y_init, x_max, n_approx, Functions.initial_equation)
-        self.improved_euler_points = ImprovedEulerMethod.solve(x_init, y_init, x_max, n_approx,
-                                                               Functions.initial_equation)
-        self.runge_kutta_points = RungeKuttaMethod.solve(x_init, y_init, x_max, n_approx, Functions.initial_equation)
+        local_errors_helper = LocalErrors()
+        base_solver = Functions()
+        euler_solver = EulerMethod()
+        improved_euler_solver = ImprovedEulerMethod()
+        runge_kutta_solver = RungeKuttaMethod()
 
-        self.euler_local_error_points = LocalErrors.calculate(self.exact_points, self.euler_points)
-        self.improved_euler_local_error_points = LocalErrors.calculate(self.exact_points, self.improved_euler_points)
-        self.runge_kutta_local_error_points = LocalErrors.calculate(self.exact_points, self.runge_kutta_points)
+        self.exact_points = ExactSolution().solve(x_init, y_init, x_max, n_approx, base_solver.exact_solution)
+        self.euler_points = euler_solver.solve(x_init, y_init, x_max, n_approx, base_solver.initial_equation)
+        self.improved_euler_points = improved_euler_solver.solve(x_init, y_init, x_max, n_approx, base_solver.initial_equation)
+        self.runge_kutta_points = runge_kutta_solver.solve(x_init, y_init, x_max, n_approx, base_solver.initial_equation)
+
+        self.euler_local_error_points = local_errors_helper.calculate(self.exact_points, self.euler_points)
+        self.improved_euler_local_error_points = local_errors_helper.calculate(self.exact_points, self.improved_euler_points)
+        self.runge_kutta_local_error_points = local_errors_helper.calculate(self.exact_points, self.runge_kutta_points)
 
         if n_0 and n_max:
-            euler_local_errors = TotalErrors.calculate_local_errors(x_init, y_init, x_max, n_approx, n_0, n_max,
-                                                                    EulerMethod)
-            improved_euler_local_errors = TotalErrors.calculate_local_errors(x_init, y_init, x_max, n_approx, n_0,
-                                                                             n_max, ImprovedEulerMethod)
-            runge_kutta_local_errors = TotalErrors.calculate_local_errors(x_init, y_init, x_max, n_approx, n_0, n_max,
-                                                                          RungeKuttaMethod)
+            euler_local_errors = euler_solver.calculate_local_errors(x_init, y_init, x_max, n_approx, n_0, n_max,)
+            improved_euler_local_errors = improved_euler_solver.calculate_local_errors(x_init, y_init, x_max, n_approx, n_0, n_max)
+            runge_kutta_local_errors = runge_kutta_solver.calculate_local_errors(x_init, y_init, x_max, n_approx, n_0, n_max)
 
-            self.euler_total_error_points = TotalErrors.calculate(euler_local_errors, n_0, n_max)
-            self.improved_euler_total_error_points = LocalErrors.calculate(improved_euler_local_errors, n_0, n_max)
-            self.runge_kutta_total_error_points = LocalErrors.calculate(runge_kutta_local_errors, n_0, n_max)
+            self.euler_total_error_points = base_solver.calculate(euler_local_errors, n_0, n_max)
+            self.improved_euler_total_error_points = base_solver.calculate(improved_euler_local_errors, n_0, n_max)
+            self.runge_kutta_total_error_points = base_solver.calculate(runge_kutta_local_errors, n_0, n_max)
 
 
 class Plot(Points):
