@@ -47,7 +47,7 @@ The picture below illustrates the dependence of maximum error for each method
 on the number of grid cells (N)
 Graphs for IVP in my task and N = 10, 50, 100, 500, 1000 respectively
 
-
+![graphs](https://github.com/molberte/DE_CP/raw/main/screenshots/te1.jpg)
 
 
 
@@ -76,3 +76,9 @@ values of a particular approximation method
 ![methods](https://github.com/molberte/DE_CP/raw/main/screenshots/classes.jpg)
 
 #### Most interesting parts of code
+
+Honestly speaking, I do not find any pieces of my code interesting somehow
+but I would like to impress my reader and add some examples.
+
+While I was searching for examples, I found the piece of code which I very proud of
+
