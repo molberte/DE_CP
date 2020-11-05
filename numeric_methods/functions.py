@@ -1,5 +1,5 @@
 from math import exp
-
+import numpy as np
 
 def const(x, y):
     return (y + x ** 2 + 1) / exp(x ** 2)
@@ -19,9 +19,15 @@ class Functions:
         return -x ** 2 - 1 + const(x0, y0) * exp(x ** 2)
 
     @staticmethod
-    def calculate(local_errors, n0, nmax):
-        total_errors = [max(map(abs, error)) for _, error in local_errors]
-        grid_cells = range(n0, nmax + 1)
+    def calculate(local_errors, n0, nmax, step):
+        total_errors = []
+        grid_cells = np.arange(n0, nmax, step)
+        for i in grid_cells:
+            tmp = []
+            for enum, err_x in enumerate(local_errors[0][0]):
+                if err_x <= i:
+                    tmp.append(abs(local_errors[0][1][enum]))
+            total_errors.append(max(tmp))
 
         return grid_cells, total_errors
 

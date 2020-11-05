@@ -16,6 +16,7 @@ class Points:
         euler_solver = EulerMethod()
         improved_euler_solver = ImprovedEulerMethod()
         runge_kutta_solver = RungeKuttaMethod()
+        step = (x_max - x_init) / n_approx
 
         self.exact_points = ExactSolution().solve(x_init, y_init, x_max, n_approx, base_solver.exact_solution)
         self.euler_points = euler_solver.solve(x_init, y_init, x_max, n_approx, base_solver.initial_equation)
@@ -26,14 +27,14 @@ class Points:
         self.improved_euler_local_error_points = local_errors_helper.calculate(self.exact_points, self.improved_euler_points)
         self.runge_kutta_local_error_points = local_errors_helper.calculate(self.exact_points, self.runge_kutta_points)
 
-        if n_0 and n_max:
-            euler_local_errors = euler_solver.calculate_local_errors(x_init, y_init, x_max, n_approx, n_0, n_max,)
-            improved_euler_local_errors = improved_euler_solver.calculate_local_errors(x_init, y_init, x_max, n_approx, n_0, n_max)
-            runge_kutta_local_errors = runge_kutta_solver.calculate_local_errors(x_init, y_init, x_max, n_approx, n_0, n_max)
 
-            self.euler_total_error_points = base_solver.calculate(euler_local_errors, n_0, n_max)
-            self.improved_euler_total_error_points = base_solver.calculate(improved_euler_local_errors, n_0, n_max)
-            self.runge_kutta_total_error_points = base_solver.calculate(runge_kutta_local_errors, n_0, n_max)
+        euler_local_errors = euler_solver.calculate_local_errors(x_init, y_init, x_max, n_approx, n_0, n_max,)
+        improved_euler_local_errors = improved_euler_solver.calculate_local_errors(x_init, y_init, x_max, n_approx, n_0, n_max)
+        runge_kutta_local_errors = runge_kutta_solver.calculate_local_errors(x_init, y_init, x_max, n_approx, n_0, n_max)
+
+        self.euler_total_error_points = base_solver.calculate(euler_local_errors, x_init, x_max, step)
+        self.improved_euler_total_error_points = base_solver.calculate(improved_euler_local_errors, x_init, x_max, step)
+        self.runge_kutta_total_error_points = base_solver.calculate(runge_kutta_local_errors, x_init, x_max, step)
 
 
 class Plot(Points):
@@ -53,10 +54,7 @@ class Plot(Points):
         ax1.legend()
         ax1.grid()
 
-        if n_0 and n_max:
-            ax2 = plt.subplot2grid((2, 2), (1, 0), colspan=1)
-        else:
-            ax2 = plt.subplot2grid((2, 2), (1, 0), colspan=2)
+        ax2 = plt.subplot2grid((2, 2), (1, 0), colspan=1)
 
         ax2.plot(*points.euler_local_error_points, label="Euler")
         ax2.plot(*points.improved_euler_local_error_points, label="Improved Euler")
@@ -68,16 +66,16 @@ class Plot(Points):
         ax2.legend()
         ax2.grid()
 
-        if n_0 and n_max:
-            ax3 = plt.subplot2grid((2, 2), (1, 1), colspan=1)
-            ax3.plot(*points.euler_total_error_points, label="Euler")
-            ax3.plot(*points.improved_euler_total_error_points, label="Improved Euler")
-            ax3.plot(*points.runge_kutta_total_error_points, label="Runge Kutta")
-            ax3.set_xlabel('x axis')  # Add an x-label to the axes
-            ax3.set_ylabel('y axis')  # Add a y-label to the axes
-            ax3.set_title("Total errors")  # Add a title to the axes.
-            ax3.legend()
-            ax3.grid()
+
+        ax3 = plt.subplot2grid((2, 2), (1, 1), colspan=1)
+        ax3.plot(*points.euler_total_error_points, label="Euler")
+        ax3.plot(*points.improved_euler_total_error_points, label="Improved Euler")
+        ax3.plot(*points.runge_kutta_total_error_points, label="Runge Kutta")
+        ax3.set_xlabel('x axis')  # Add an x-label to the axes
+        ax3.set_ylabel('y axis')  # Add a y-label to the axes
+        ax3.set_title("Total errors")  # Add a title to the axes.
+        ax3.legend()
+        ax3.grid()
             
         plt.tight_layout()
         plt.show()
