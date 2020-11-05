@@ -3,6 +3,41 @@
 ####Kseniya Kudasheva BS19-02
 
 
-**Problem statement**
 
-![first part](D:\my\study\sem 3\DE\DE_CP\screenshots\DE_1.jpg?raw=true "Title")
+
+![first part](https://github.com/molberte/DE_CP/raw/main/screenshots/DE_1.jpg)
+
+![second part](https://github.com/molberte/DE_CP/raw/main/screenshots/DE_2.jpg)
+
+![third part](https://github.com/molberte/DE_CP/raw/main/screenshots/DE_3.jpg)
+
+![forth part](https://github.com/molberte/DE_CP/raw/main/screenshots/DE_4.jpg)
+
+####Implementation
+
+I chose Python language for implementation with three libraries imported:
+MatPlotlib for graph plotting, Tkinter for GUI, and Pandas for better experience 
+of calculating the results of different Numerical Methods
+
+**GUI**
+
+GUI provides the possibility to input values of x0, y0, X, N, n0 and n_max
+
+![window](https://github.com/molberte/DE_CP/raw/main/screenshots/window.jpg)
+
+Insert some values into windows for corresponding parameters:
+
+![window_data](https://github.com/molberte/DE_CP/raw/main/screenshots/window_and_values.jpg)
+
+Press 'Plot!' button...
+
+Wait for a little
+
+And some magic  is happening:
+
+![plot](https://github.com/molberte/DE_CP/raw/main/screenshots/plot.jpg)
+
+
+**UML diagrams**
+
+![UML](https://github.com/molberte/DE_CP/raw/main/screenshots/plot.jpg)
