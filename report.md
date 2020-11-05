@@ -49,7 +49,8 @@ Graphs for IVP in my task and N = 10, 50, 100, 500, 1000 respectively
 
 ![graphs](https://github.com/molberte/DE_CP/raw/main/screenshots/te1.jpg)
 
-
+The larger N, the closer the methods are to the correct value. This fact explains that the
+smaller the step, the fewer errors in general
 
 **UML diagrams**
 
