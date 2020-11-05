@@ -40,4 +40,25 @@ And some magic  is happening:
 
 **UML diagrams**
 
-![UML](https://github.com/molberte/DE_CP/raw/main/screenshots/plot.jpg)
+I divided code into 4 parts: numeric_methods, error_calculator, plotting and main
+
+Well, names give description of each part intuitively
+
+![UML](https://github.com/molberte/DE_CP/raw/main/screenshots/uml_white.jpg)
+
+**numeric_methods** is a directory that contains all methods and functions used
+for calculations
+
+**error_calculator** is also a directory that contains a .py file which performs 
+calculation of local errors
+
+**plotting.py** is responsible for graphs plotting
+
+and **main.py** is responsible for set and start of software itself
+
+
+Each numeric method contains the function *solve*, which allows to find
+values of a particular approximation method
+
+
+
