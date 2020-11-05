@@ -31,7 +31,7 @@ Insert some values into windows for corresponding parameters:
 
 Press 'Plot!' button...
 
-Wait for a little
+Wait for a little.....
 
 And some magic  is happening:
 
@@ -80,5 +80,50 @@ values of a particular approximation method
 Honestly speaking, I do not find any pieces of my code interesting somehow
 but I would like to impress my reader and add some examples.
 
-While I was searching for examples, I found the piece of code which I very proud of
+While I was searching for examples, I found the piece of code which *I
+ very proud of:*
 
+![proud](https://github.com/molberte/DE_CP/raw/main/screenshots/class_parameter.jpg)
+
+Why am I proud? 
+
+Firstly, I did not know how to initialize instance of a class
+
+Secondly, I prevented nested and copied parts of code
+
+So now, when you need to create additional parameter with entry window,
+you can just create instance of this class with some values and do not write 
+it manually
+
+
+*Base functions*
+
+![base](https://github.com/molberte/DE_CP/raw/main/screenshots/base.jpg)
+
+There are very basic function of given differential equation: equation itself,
+constant C, and exact solution of given equation
+
+*Improved Euler*
+
+![IEM](https://github.com/molberte/DE_CP/raw/main/screenshots/class_improved.jpg)
+
+Also, there are few classes which based on previous one (*Functions*)
+
+Along with Improved Euler method, there also are Euler method, Exact solution,
+and Runge-Kutta method
+
+I decided to provide an example of these methods with Improved Euler method
+
+*Errors*
+
+![error](https://github.com/molberte/DE_CP/raw/main/screenshots/class_error.jpg)
+
+Here you can see the class that is used for local errors calculation.
+It takes two lists of points (points of approximation method 
+and exact solution points) and find the absolute value of their difference
+
+*Plotting*
+
+![plot](https://github.com/molberte/DE_CP/raw/main/screenshots/class_plot.jpg)
+
+There is an example of one graph (out of three) plotting 
