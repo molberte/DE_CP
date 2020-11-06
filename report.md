@@ -45,9 +45,10 @@ of Runge-Kutta method is the biggest with the lowest amount of points and vice v
 
 The picture below illustrates the dependence of maximum error for each method
 on the number of grid cells (N)
-Graphs for IVP in my task and N = 10, 50, 100, 500, 1000 respectively
 
-![graphs](https://github.com/molberte/DE_CP/raw/main/screenshots/te1.jpg)
+Graphs for IVP in my task with n_0 = 1 and n_max = 10, 50, 100 respectively
+
+![graphs](https://github.com/molberte/DE_CP/raw/main/screenshots/convergence.jpg)
 
 The larger N, the closer the methods are to the correct value. This fact explains that the
 smaller the step, the fewer errors in general
