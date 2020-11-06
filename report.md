@@ -48,7 +48,7 @@ on the number of grid cells (N)
 
 Graphs for IVP in my task with n_0 = 1 and n_max = 10, 50, 100 respectively
 
-![graphs](https://github.com/molberte/DE_CP/raw/main/screenshots/convergence.jpg)
+![convergence](https://github.com/molberte/DE_CP/raw/main/screenshots/convergence.jpg)
 
 The larger N, the closer the methods are to the correct value. This fact explains that the
 smaller the step, the fewer errors in general
