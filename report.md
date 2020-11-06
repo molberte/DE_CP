@@ -27,7 +27,7 @@ GUI provides the possibility to input values of x0, y0, X, N, n0 and n_max
 
 Insert some values into windows for corresponding parameters:
 
-![window_data](https://github.com/molberte/DE_CP/raw/main/screenshots/window_and_values.jpg)
+![window_data](https://github.com/molberte/DE_CP/raw/main/screenshots//window_with_values.jpg)
 
 Press 'Plot!' button...
 
