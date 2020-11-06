@@ -1,6 +1,6 @@
 # Differential equations
 ## Computational practicum
-####Kseniya Kudasheva BS19-02
+###Kseniya Kudasheva BS19-02
 
 
 
