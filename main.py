@@ -1,9 +1,7 @@
 import matplotlib
-from matplotlib import pyplot as plt
 from tkinter import *
 from tkinter import ttk
 from plotting import Points, Plot
-
 
 root = Tk()
 root.title("DE_practicum")
@@ -63,6 +61,5 @@ label3.grid(row=3, column=1, columnspan = 2)
 button = Button(text = "Plot!", width=10, height=2, bg='white', fg = 'black')
 button.bind("<Button-1>", plot)
 button.grid(row=4, column=1, columnspan = 2)
-
 
 root.mainloop()
